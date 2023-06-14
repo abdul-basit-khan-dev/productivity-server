@@ -1,18 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
 const ActivityRouter = require("./routes/activity.route");
+const AuthRouter = require("./routes/auth.route");
 
 /* Loading the environment variables from the .env file. */
-require("dotenv").config();
-
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://basitkhanbasit640:fTQObotUxzTD2W07@cluster0.restcbt.mongodb.net/?retryWrites=true&w=majority";
 
-    /* Telling the application to use the express.json() middleware. This middleware will parse the body of
+/* Telling the application to use the express.json() middleware. This middleware will parse the body of
 any request that has a Content-Type of application/json. */
 app.use(cors());
 app.use(express.json());
@@ -34,3 +34,5 @@ mongoose
   });
 
 app.use("/api", ActivityRouter);
+app.use("/api/auth", AuthRouter);
+
