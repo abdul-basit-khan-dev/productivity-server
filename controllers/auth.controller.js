@@ -21,8 +21,7 @@ const login =  (req, res) => {
 
     return res.status(401).json({
         statusCode: 401,
-        msg: "Invalid Credentials",
-        token: 'not-valid'
+        msg: "Invalid Credentials"
     });
 }
 
